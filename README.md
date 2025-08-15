@@ -12,6 +12,7 @@ uv run main.py <dateiname.xlsx> > output.html
 Die Excel-Datei muss folgendermaßen aussehen:
 
 | - | - | Mittwoch | Donnerstag morgen | Donnerstag abend |
+|---|---|---|---|---|
 |Rundflugstand | Leitung | Anna Mustermann | Anna Mustermann | Henner Piffendeckel |
 |Rundflugstand | Helfer | Bibi Mustermann | Bibi Mustermann | Hildegard Piffendeckel |
 
