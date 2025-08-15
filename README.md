@@ -5,7 +5,7 @@ Tool zum Erstellen eines Schichtplans für Quax-Events (zuerst genutzt beim VAWC
 So starten:
 
 ```
-uv run main.py <dateiname.xlsx> > output.md
+uv run main.py <dateiname.xlsx> > output.html
 ```
 
 
