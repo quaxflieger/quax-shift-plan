@@ -42,25 +42,45 @@ def read_excel_file(file_path: str):
             # print(f"{cell.value} = {when}: {what}")
             names[f"{cell.value}"].append((when, what, detail))
 
-    print("# Schichtplan VAWC, 2025")
+    print("<html>")
+    print("""<head>
+          <style>
+          @media print }
+            h1,h2 {
+                page-break-after: avoid;
+                page-break-before:auto;
+            ul {
+                break-inside: avoid-page;
+                page-break-inside: avoid; 
+                page-break-after:auto;
+            }
+          }
+          </style>
+    </head>""")
+    print("<body>")
+
+    print("<h1>Schichtplan VAWC, 2025</h1>")
     print()
     formatted_date_time = datetime.datetime.now().strftime('%d. %B %Y, %H:%M')
-    print(f"  * Stand: {formatted_date_time} Uhr")
+    print(f"<ul><li>Stand: {formatted_date_time} Uhr</ul></li>")
     print()
     sorted_names = sorted(names.keys())
     for name in sorted_names:
-        if name is None or name == 'None' or name == "TBD" or name == "Aufbau" or name == 'Aufbau/Betrieb':
+        if name is None or name == 'None' or name == "TBD" or name == "Aufbau" or name == 'Aufbau/Betrieb' or name == 'Betrieb':
             continue
         shifts = names[name]
 
-        print(f'## {name}')
+        print(f'<h2>{name}</h2>')
         print()
+        print("<ul>")
         for shift in shifts:
             if shift[2] is not None:
-                print(f'  * {shift[0]}: {shift[1]} - {shift[2]}')
+                print(f'<li>{shift[0]}: {shift[1]} - {shift[2]}</li>')
             else:
-                print(f'  * {shift[0]}: {shift[1]}')
-        print()
+                print(f'<li>{shift[0]}: {shift[1]}</li>')
+        print("</ul>")
+    print("</body>")
+    print("</html>")
 
 def main(filename: str):
     read_excel_file(filename)
